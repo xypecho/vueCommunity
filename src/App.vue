@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    
+    <vhead></vhead>
   </div>
 </template>
 
 <script>
+import vhead from './components/vhead/vhead'
 export default {
   name: 'App',
+  components:{
+    vhead
+  },
   mounted(){
     this.getData();
   },
