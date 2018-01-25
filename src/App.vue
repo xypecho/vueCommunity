@@ -1,15 +1,21 @@
 <template>
   <div id="app">
     <vhead></vhead>
+    <tab></tab>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import vhead from './components/vhead/vhead'
+import tab from './components/tab/tab'
+import page from './components/page/page'
 export default {
   name: 'App',
   components:{
-    vhead
+    vhead,
+    tab,
+    page
   },
   mounted(){
     this.getData();
@@ -26,7 +32,7 @@ export default {
           mdrender:true
         }
       }).then(function(data){
-        console.log(data);
+        //console.log(data);
       })
     }
   }
