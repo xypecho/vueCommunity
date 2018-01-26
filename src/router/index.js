@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Page from '../components/page/page'
+import all from '../components/all/all'
+import good from '../components/good/good'
+import weex from '../components/weex/weex'
+import share from '../components/share/share'
+import ask from '../components/ask/ask'
+import job from '../components/job/job'
 
 Vue.use(Router)
 
@@ -8,27 +13,27 @@ export default new Router({
   routes: [
     {
       path: '/all',
-      component: Page
+      component: all
     },
     {
       path: '/good',
-      component: Page
+      component: good
     },
     {
       path: '/weex',
-      component: Page
+      component: weex
     },
     {
       path: '/share',
-      component: Page
+      component: share
     },
     {
       path: '/ask',
-      component: Page
+      component: ask
     },
     {
       path: '/job',
-      component: Page
+      component: job
     }
   ]
 })

@@ -9,13 +9,11 @@
 <script>
 import vhead from './components/vhead/vhead'
 import tab from './components/tab/tab'
-import page from './components/page/page'
 export default {
   name: 'App',
   components:{
     vhead,
-    tab,
-    page
+    tab
   },
   mounted(){
     this.getData();
