@@ -11,6 +11,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+  	{
+  		path:'/',
+  		redirect:'all'
+  	},
     {
       path: '/all',
       component: all

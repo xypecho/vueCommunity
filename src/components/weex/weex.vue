@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<div class="child" v-for='ltem in articleList'>
+		<div class="child" v-for='ltem in articleList' ref='child' @click='select(ltem.id)'>
 			<div class="avatar">
 				<img :src="ltem.author.avatar_url">
 			</div>
@@ -25,14 +25,20 @@
 			</div>
 			<div class="time">{{ltem.last_reply_at | formattime}}</div>
 		</div>
+		<showdetail :showdetail='selectList' ref='showdetail'></showdetail>
 	</div>
 </template>
 <script>
+	import showdetail from '../showdetail/showdetail'
 	export default{
 		data(){
 			return{
-				articleList:[]
+				articleList:[],
+				selectList:0
 			}
+		},
+		components:{
+			showdetail
 		},
 		mounted(){
 		  this.getData();
@@ -90,6 +96,11 @@
 		      console.log(data);
 		      this.articleList=data.body.data;
 		    })
+		  },
+		  select(id){
+		  	this.selectList=id;
+		  	console.log(this.selectList);
+		  	this.$refs.showdetail.show();
 		  }
 		}
 	}
