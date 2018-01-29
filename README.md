@@ -7,6 +7,14 @@
 ![Aaron Swartz](https://raw.githubusercontent.com/xypecho/xypecho.github.io/master/vueCommunity/1517232107.png)  
 ## 技术栈
 vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus  
+## 实现功能  
+[x] C
+[x] C++
+[x] Java
+[x] Qt
+[x] Android
+[ ] C#
+[ ] .NET
 ## 项目运行
 ```
 git clone https://github.com/xypecho/vueCommunity.git
