@@ -6,7 +6,8 @@
 二维码扫描预览地址
 ![Aaron Swartz](https://raw.githubusercontent.com/xypecho/xypecho.github.io/master/vueCommunity/1517232107.png)  
 ## 技术栈
-vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus
+vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus  
+## 项目运行
 ```
 git clone https://github.com/xypecho/vueCommunity.git
 cd vueCommunity
