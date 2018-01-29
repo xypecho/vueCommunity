@@ -8,13 +8,21 @@
 ## 技术栈
 vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus  
 ## 实现功能  
-* [x] C
-* [x] C++
-+ [x] Java
-+ [x] Qt
-- [x] Android
-- [ ] C#
-[ ] .NET
+* [x] 首页列表
+* [x] 主题内容
+* [ ] 分页
+* [ ] 用户信息（点击头像）
+* [ ] 登录功能
+* [ ] 收藏（取消收藏）主题
+* [x] 评论列表
+* [ ]发表评论
+* [ ]回复评论
+* [ ]点赞（取消点赞）功能
+* [ ]发布主题
+* [ ]消息中心（已读、未读）
+* [ ]个人中心
+
+
 ## 项目运行
 ```
 git clone https://github.com/xypecho/vueCommunity.git
