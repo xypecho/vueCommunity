@@ -8,12 +8,12 @@
 ## 技术栈
 vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus  
 ## 实现功能  
-[x] C
-[x] C++
-[x] Java
-[x] Qt
-[x] Android
-[ ] C#
+* [x] C
+* [x] C++
++ [x] Java
++ [x] Qt
+- [x] Android
+- [ ] C#
 [ ] .NET
 ## 项目运行
 ```
