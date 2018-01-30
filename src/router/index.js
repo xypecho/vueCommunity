@@ -6,6 +6,9 @@ import weex from '../components/weex/weex'
 import share from '../components/share/share'
 import ask from '../components/ask/ask'
 import job from '../components/job/job'
+import release from '../components/release/release'
+import message from '../components/message/message'
+import personal from '../components/personal/personal'
 
 Vue.use(Router)
 
@@ -38,6 +41,18 @@ export default new Router({
     {
       path: '/job',
       component: job
+    },
+    {
+      path: '/release',
+      component: release
+    },
+    {
+      path: '/message',
+      component: message
+    },
+    {
+      path: '/personal',
+      component: personal
     }
   ]
 })

@@ -26,10 +26,12 @@
 			<div class="time">{{ltem.last_reply_at | formattime}}</div>
 		</div>
 		<showdetail :showdetail='selectList' ref='showdetail'></showdetail>
+		<footnav rel='footnav'></footnav>	
 	</div>
 </template>
 <script>
 	import showdetail from '../showdetail/showdetail'
+	import footnav from '../footnav/footnav'
 	export default{
 		data(){
 			return{
@@ -38,7 +40,8 @@
 			}
 		},
 		components:{
-			showdetail
+			showdetail,
+			footnav
 		},
 		mounted(){
 		  this.getData();
