@@ -24,23 +24,23 @@ export default new Router({
     },
     {
       path: '/good',
-      component: good
+      component: all
     },
     {
       path: '/weex',
-      component: weex
+      component: all
     },
     {
       path: '/share',
-      component: share
+      component: all
     },
     {
       path: '/ask',
-      component: ask
+      component: all
     },
     {
       path: '/job',
-      component: job
+      component: all
     },
     {
       path: '/release',

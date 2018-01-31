@@ -56,4 +56,6 @@
 				display:block
 				font-size:14px
 				line-height:20px
+		.router-link-exact-active
+			color:#31c27c
 </style>

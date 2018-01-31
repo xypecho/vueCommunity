@@ -1,19 +1,21 @@
 <template>
   <div id="app">
     <vhead></vhead>
-    <tab></tab>
     <router-view></router-view>
+    <footnav></footnav>
   </div>
 </template>
 
 <script>
 import vhead from './components/vhead/vhead'
 import tab from './components/tab/tab'
+import footnav from './components/footnav/footnav'
 export default {
   name: 'App',
   components:{
     vhead,
-    tab
+    tab,
+    footnav
   },
   mounted(){
     this.getData();

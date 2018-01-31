@@ -1,5 +1,6 @@
 <template>
 	<div class="page">
+		<tab></tab>
 		<div class="child" v-for='ltem in articleList' ref='child' @click='select(ltem.id)'>
 			<div class="avatar">
 				<img :src="ltem.author.avatar_url">
@@ -32,6 +33,7 @@
 <script>
 	import showdetail from '../showdetail/showdetail'
 	import footnav from '../footnav/footnav'
+	import tab from '../tab/tab'
 	export default{
 		data(){
 			return{
@@ -41,10 +43,11 @@
 		},
 		components:{
 			showdetail,
-			footnav
+			footnav,
+			tab
 		},
 		mounted(){
-		  this.getData();
+		  this.getData(1,'all');
 		},
 		filters:{
 			formattime:function(val){
@@ -84,14 +87,29 @@
 				return result;
 			}
 		},
+		watch:{
+			//监听路由，只要路由有变化(路径，参数等变化)都有执行下面的函数，你可以
+			$route: {
+			    handler: function (val, oldVal) {
+			       let _urlParams = this.$route.params;
+			       console.log(val);
+			       let tab=val.fullPath;
+			       tab=tab.substring(1);
+			       this.getData(1,tab);
+			        //created事件触发的函数可以在这里写...  
+			        //都是componentA组件，声明周期还在，改变不了
+			    },
+			    deep: true
+			}
+		},
 		methods:{
-		  getData:function(){
+		  getData:function(page,tab){
 		    this.$http({
 		      methods:'get',
 		      url:'https://www.vue-js.com/api/v1/topics',
 		      params:{
-		        page:1,
-		        tab:'all',
+		        page:page,
+		        tab:tab,
 		        limit:20,
 		        mdrender:true
 		      }
@@ -110,8 +128,8 @@
 </script>
 <style lang='stylus' rel='stylesheet/stylus'>
 	.page
-		padding :10px 15px
 		.child
+			padding :0px 15px
 			background-color:#fff
 			height:50px
 			display:flex
