@@ -30,7 +30,7 @@
 	export default{
 		methods:{
 			hidenav:function(){
-				alert(123);
+				
 			}
 		}
 	}

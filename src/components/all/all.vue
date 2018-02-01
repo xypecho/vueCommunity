@@ -48,6 +48,10 @@
 		},
 		mounted(){
 		  this.getData(1,'all');
+		  window.addEventListener('scroll',this.getMoreData);
+		  this.$nextTick(()=>{
+		  	this.getMoreData();
+		  })
 		},
 		filters:{
 			formattime:function(val){
@@ -92,7 +96,7 @@
 			$route: {
 			    handler: function (val, oldVal) {
 			       let _urlParams = this.$route.params;
-			       console.log(val);
+			       //console.log(val);
 			       let tab=val.fullPath;
 			       tab=tab.substring(1);
 			       this.getData(1,tab);
@@ -114,14 +118,42 @@
 		        mdrender:true
 		      }
 		    }).then(function(data){
-		      console.log(data);
+		      //console.log(data);
 		      this.articleList=data.body.data;
 		    })
 		  },
 		  select(id){
 		  	this.selectList=id;
-		  	console.log(this.selectList);
+		  	//console.log(this.selectList);
 		  	this.$refs.showdetail.show();
+		  },
+		  getMoreData:function(){
+		  	let page=2;
+		  	let scrollHeight=document.documentElement.scrollTop;//获取滚动的高度
+		  	let screenHeight=document.documentElement.clientHeight;//网页可视区域高度
+		  	let documentHeight=document.body.scrollHeight;//整个文档高度
+		  	let tab=location.href;
+		  	let index_of=tab.indexOf('#');
+		  	tab=tab.substring(index_of+2);
+		  	if (scrollHeight+screenHeight>=documentHeight) {
+		  		this.$http({
+		  		  methods:'get',
+		  		  url:'https://www.vue-js.com/api/v1/topics',
+		  		  params:{
+		  		    page:page,
+		  		    tab:tab,
+		  		    limit:20,
+		  		    mdrender:true
+		  		  }
+		  		}).then(function(data){
+		  		let datas=data.body.data;
+		  		for(let dat of datas){
+		  			this.articleList.push(dat);
+		  		}
+		  		  console.log(this.articleList);
+		  		})
+		  	}
+		  	page++;
 		  }
 		}
 	}
