@@ -34,6 +34,7 @@
 	import showdetail from '../showdetail/showdetail'
 	import footnav from '../footnav/footnav'
 	import tab from '../tab/tab'
+	let page=2;
 	export default{
 		data(){
 			return{
@@ -49,9 +50,9 @@
 		mounted(){
 		  this.getData(1,'all');
 		  window.addEventListener('scroll',this.getMoreData);
-		  this.$nextTick(()=>{
-		  	this.getMoreData();
-		  })
+		  // this.$nextTick(()=>{
+		  // 	this.getMoreData();
+		  // })
 		},
 		filters:{
 			formattime:function(val){
@@ -100,6 +101,7 @@
 			       let tab=val.fullPath;
 			       tab=tab.substring(1);
 			       this.getData(1,tab);
+			       page=1;
 			        //created事件触发的函数可以在这里写...  
 			        //都是componentA组件，声明周期还在，改变不了
 			    },
@@ -128,7 +130,6 @@
 		  	this.$refs.showdetail.show();
 		  },
 		  getMoreData:function(){
-		  	let page=2;
 		  	let scrollHeight=document.documentElement.scrollTop;//获取滚动的高度
 		  	let screenHeight=document.documentElement.clientHeight;//网页可视区域高度
 		  	let documentHeight=document.body.scrollHeight;//整个文档高度
@@ -152,8 +153,8 @@
 		  		}
 		  		  console.log(this.articleList);
 		  		})
+		  		page++;
 		  	}
-		  	page++;
 		  }
 		}
 	}
