@@ -10,7 +10,7 @@ vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus
 ## 实现功能  
 * [x] 首页列表
 * [x] 主题内容
-* [ ] 下拉加载更多
+* [x] 下拉加载更多
 * [ ] 用户信息（点击头像）
 * [x] 登录功能
 * [ ] 收藏（取消收藏）主题

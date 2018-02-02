@@ -9,6 +9,7 @@ import job from '../components/job/job'
 import release from '../components/release/release'
 import message from '../components/message/message'
 import personal from '../components/personal/personal'
+import personalcenter from '../components/personalcenter/personalcenter'
 
 Vue.use(Router)
 
@@ -53,6 +54,10 @@ export default new Router({
     {
       path: '/personal',
       component: personal
+    },
+    {
+      path: '/personalcenter',
+      component: personalcenter
     }
   ]
 })

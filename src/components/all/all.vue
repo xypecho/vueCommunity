@@ -130,9 +130,10 @@
 		  	this.$refs.showdetail.show();
 		  },
 		  getMoreData:function(){
-		  	let scrollHeight=document.documentElement.scrollTop;//获取滚动的高度
+		  	let scrollHeight=(document.body.scrollTop || document.documentElement.scrollTop);//获取滚动的高度,pc端使用document.documentElement.scrollTop
 		  	let screenHeight=document.documentElement.clientHeight;//网页可视区域高度
 		  	let documentHeight=document.body.scrollHeight;//整个文档高度
+		  	console.log(scrollHeight);
 		  	let tab=location.href;
 		  	let index_of=tab.indexOf('#');
 		  	tab=tab.substring(index_of+2);
