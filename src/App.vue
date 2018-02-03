@@ -10,8 +10,14 @@
 import vhead from './components/vhead/vhead'
 import tab from './components/tab/tab'
 import footnav from './components/footnav/footnav'
+import Vue from 'vue'
 export default {
   name: 'App',
+  data(){
+    return{
+      Bus:new Vue()
+    }
+  },
   components:{
     vhead,
     tab,

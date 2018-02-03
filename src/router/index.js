@@ -11,7 +11,9 @@ import message from '../components/message/message'
 import personal from '../components/personal/personal'
 import personalcenter from '../components/personalcenter/personalcenter'
 
+
 Vue.use(Router)
+
 
 export default new Router({
   routes: [
