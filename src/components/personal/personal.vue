@@ -15,6 +15,9 @@
 				error_num:0
 			}
 		},
+		mounted(){
+			this.autologin();
+		},
 		methods:{
 			login:function(){
 				// 'Access Token: 35a006c7-dd2d-4c1e-b2ca-e127905cf9f8
@@ -27,11 +30,17 @@
 					console.log(data);
 					this.$store.state.persondata=data.body;
 					localStorage.setItem('accesstoken', accesstoken);
+					localStorage.setItem('loginname', data.body.loginname);
 					this.$router.push({path:'/personalcenter'})
 				},function(error){
-					console.log(error);
+					//console.log(error);
 					this.error_num=error.status;
 				})
+			},
+			autologin:function(){
+				if (localStorage.getItem("accesstoken") && localStorage.getItem("loginname")) {
+					this.$router.push({path:'/personalcenter'});
+				}
 			}
 		}
 	}
