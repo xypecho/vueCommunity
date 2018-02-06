@@ -1,27 +1,33 @@
 <template>
 	<div class="personalcenter">
-		<img :src="persondata.avatar_url">
+		<img :src="userinfo.avatar_url">
 		<p>{{userinfo.loginname}}</p>
 		<span>注册于:{{userinfo.create_at | formate}}</span>
 		<span class="score">积分{{userinfo.score}}</span>
 		<div class="user_list">
-			<div class="user_list_child" @click='changearrow'>
+			<div class="user_list_child" @click='changearrow(1)'>
 				<span>最近主题</span>
 				<span>{{userinfo.recent_topics.length}}个</span>
-				<span v-show='!uparrow'><img src="./下箭头.png" width="20"></span>
-				<span v-show='uparrow'><img src="./上箭头.png" height="20"></span>
+				<span :class="uparrow==1?'uparrow':''"><img src="./下箭头.png" width="20"></span>
 			</div>
-			<div class="user_list_child" @click='changearrow'>
+			<div class="user_list_son" :class="uparrow==1?'uparrow':''">
+				<p v-for='item in userinfo.recent_topics' @click='pushinto(item.id)'>{{item.title}}</p>
+			</div>
+			<div class="user_list_child" @click='changearrow(2)'>
 				<span>最近回复</span>
 				<span>{{userinfo.recent_replies.length}}个</span>
-				<span v-show='!uparrow'><img src="./下箭头.png" width="20"></span>
-				<span v-show='uparrow'><img src="./上箭头.png" height="20"></span>
+				<span :class="uparrow==2?'uparrow':''"><img src="./下箭头.png" width="20"></span>
 			</div>
-			<div class="user_list_child" @click='changearrow'>
+			<div class="user_list_son" :class="uparrow==2?'uparrow':''">
+				<p v-for='item in userinfo.recent_replies' @click='pushinto(item.id)'>{{item.title}}</p>
+			</div>
+			<div class="user_list_child" @click='changearrow(3)'>
 				<span>收藏主题</span>
 				<span>{{userinfo.collect_topics.length}}个</span>
-				<span v-show='!uparrow'><img src="./下箭头.png" width="20"></span>
-				<span v-show='uparrow'><img src="./上箭头.png" height="20"></span>
+				<span :class="uparrow==3?'uparrow':''"><img src="./下箭头.png" width="20"></span>
+			</div>
+			<div class="user_list_son" :class="uparrow==3?'uparrow':''">
+				<p v-for='item in userinfo.collect_topics' @click='pushinto(item.id)'>{{item.title}}</p>
 			</div>
 		</div>
 	</div>
@@ -30,8 +36,12 @@
 	export default {
 	data () {
 	 return {
-	 	userinfo:{},
-	 	uparrow:false
+	 	userinfo:{
+	 		recent_topics: [],
+	 		recent_replies:[],
+	 		collect_topics:[]
+	 	},
+	 	uparrow:-1
 	 }
 	},
 	mounted(){
@@ -55,8 +65,16 @@
 		      console.log(this.userinfo);
 		    })
 		},
-		changearrow:function(){
-			this.uparrow=!this.uparrow;
+		changearrow:function(id){
+			if(this.uparrow==id){
+				this.uparrow=-1;
+			}else{
+				this.uparrow=id;
+			}
+		},
+		pushinto:function(id){
+			console.log(id);
+			this.$router.push({path:'/showdetail',query: {id}});
 		}
 	},
 	computed: {
@@ -69,6 +87,7 @@
 <style lang='stylus' rel='stylesheet/stylus'>
 	body
 		background-color:#f8f8f8
+		overflow:hidden
 	.personalcenter
 		padding:20px
 		text-align:center
@@ -100,7 +119,25 @@
 					line-height:30px
 					img
 						vertical-align:middle
+					&.uparrow
+						display:block
+						img
+							transform:rotate(180deg)
 				&:nth-child(1)
 					text-align:left
-
+			.user_list_son
+				display:none
+				p
+					font-size:14px
+					font-weight:100
+					text-align:left
+					padding-left:60px
+					width:180px
+					text-overflow:ellipsis
+					white-space:nowrap
+					padding-top:10px
+					overflow:hidden
+					height:10px
+				&.uparrow
+					display:block
 </style>
