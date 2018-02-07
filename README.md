@@ -11,7 +11,7 @@ vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus
 * [x] 首页列表
 * [x] 主题内容
 * [x] 下拉加载更多
-* [ ] 用户信息（点击头像）
+* [x] 用户信息（点击头像）
 * [x] 登录功能
 * [ ] 收藏（取消收藏）主题
 * [x] 评论列表
@@ -20,7 +20,7 @@ vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus
 * [ ] 点赞（取消点赞）功能
 * [ ] 发布主题
 * [ ] 消息中心（已读、未读）
-* [ ] 个人中心
+* [x] 个人中心
 
 
 ## 项目运行
