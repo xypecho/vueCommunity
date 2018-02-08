@@ -5,6 +5,7 @@
 线上[预览地址](https://xypecho.github.io/vueCommunity)  
 二维码扫描预览地址
 ![Aaron Swartz](https://raw.githubusercontent.com/xypecho/xypecho.github.io/master/vueCommunity/1517232107.png)  
+登录的accesstoken为35a006c7-dd2d-4c1e-b2ca-e127905cf9f8,用户也可以自行去vue中文社区注册帐号
 ## 技术栈
 vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus  
 ## 实现功能  
@@ -12,7 +13,7 @@ vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus
 * [x] 主题内容
 * [x] 下拉加载更多
 * [x] 用户信息（点击头像）
-* [x] 登录功能(accesstoken为35a006c7-dd2d-4c1e-b2ca-e127905cf9f8,用户也可以自行去vue中文社区注册帐号)
+* [x] 登录功能
 * [ ] 收藏（取消收藏）主题
 * [x] 评论列表
 * [ ] 发表评论
