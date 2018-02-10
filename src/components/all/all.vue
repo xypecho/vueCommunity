@@ -162,6 +162,7 @@
 </script>
 <style lang='stylus' rel='stylesheet/stylus'>
 	.page
+		padding:0!important
 		.child
 			padding :0px 15px
 			background-color:#fff

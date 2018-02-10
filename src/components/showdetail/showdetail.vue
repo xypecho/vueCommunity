@@ -52,7 +52,6 @@
 							mdrender:true
 						}
 					}).then(function(data){
-						//console.log(data);
 						data=data.body.data;
 						console.log(data);
 						this.showdetail_content=data;

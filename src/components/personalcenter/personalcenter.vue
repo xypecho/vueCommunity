@@ -1,38 +1,43 @@
 <template>
 	<div class="personalcenter">
-		<img :src="userinfo.avatar_url">
-		<p>{{userinfo.loginname}}</p>
-		<span>注册于:{{userinfo.create_at | formate}}</span>
-		<span class="score">积分{{userinfo.score}}</span>
-		<div class="user_list">
-			<div class="user_list_child" @click='changearrow(1)'>
-				<span>最近主题</span>
-				<span>{{userinfo.recent_topics.length}}个</span>
-				<span :class="uparrow==1?'uparrow':''"><img src="./下箭头.png" width="20"></span>
+		<div class="content">
+			<img :src="userinfo.avatar_url">
+			<p>{{userinfo.loginname}}</p>
+			<span>注册于:{{userinfo.create_at | formate}}</span>
+			<span class="score">积分{{userinfo.score}}</span>
+			<div class="user_list">
+				<div class="user_list_child" @click='changearrow(1)'>
+					<span>最近主题</span>
+					<span>{{userinfo.recent_topics.length}}个</span>
+					<span :class="uparrow==1?'uparrow':''"><img src="./下箭头.png" width="20"></span>
+				</div>
+				<div class="user_list_son" :class="uparrow==1?'uparrow':''">
+					<p v-for='item in userinfo.recent_topics' @click='pushinto(item.id)'>{{item.title}}</p>
+				</div>
+				<div class="user_list_child" @click='changearrow(2)'>
+					<span>最近回复</span>
+					<span>{{userinfo.recent_replies.length}}个</span>
+					<span :class="uparrow==2?'uparrow':''"><img src="./下箭头.png" width="20"></span>
+				</div>
+				<div class="user_list_son" :class="uparrow==2?'uparrow':''">
+					<p v-for='item in userinfo.recent_replies' @click='pushinto(item.id)'>{{item.title}}</p>
+				</div>
+				<div class="user_list_child" @click='changearrow(3)'>
+					<span>收藏主题</span>
+					<span>{{userinfo.collect_topics.length}}个</span>
+					<span :class="uparrow==3?'uparrow':''"><img src="./下箭头.png" width="20"></span>
+				</div>
+				<div class="user_list_son" :class="uparrow==3?'uparrow':''">
+					<p v-for='item in userinfo.collect_topics' @click='pushinto(item.id)'>{{item.title}}</p>
+				</div>
 			</div>
-			<div class="user_list_son" :class="uparrow==1?'uparrow':''">
-				<p v-for='item in userinfo.recent_topics' @click='pushinto(item.id)'>{{item.title}}</p>
-			</div>
-			<div class="user_list_child" @click='changearrow(2)'>
-				<span>最近回复</span>
-				<span>{{userinfo.recent_replies.length}}个</span>
-				<span :class="uparrow==2?'uparrow':''"><img src="./下箭头.png" width="20"></span>
-			</div>
-			<div class="user_list_son" :class="uparrow==2?'uparrow':''">
-				<p v-for='item in userinfo.recent_replies' @click='pushinto(item.id)'>{{item.title}}</p>
-			</div>
-			<div class="user_list_child" @click='changearrow(3)'>
-				<span>收藏主题</span>
-				<span>{{userinfo.collect_topics.length}}个</span>
-				<span :class="uparrow==3?'uparrow':''"><img src="./下箭头.png" width="20"></span>
-			</div>
-			<div class="user_list_son" :class="uparrow==3?'uparrow':''">
-				<p v-for='item in userinfo.collect_topics' @click='pushinto(item.id)'>{{item.title}}</p>
-			</div>
+			<p @click='signOut'>退出登录</p>
 		</div>
+		<showdetail :showdetail='selectList' ref='showdetail'></showdetail>
 	</div>
 </template>
 <script>
+	import showdetail from '../showdetail/showdetail'
 	export default {
 	data () {
 	 return {
@@ -41,8 +46,12 @@
 	 		recent_replies:[],
 	 		collect_topics:[]
 	 	},
-	 	uparrow:-1
+	 	uparrow:-1,
+	 	selectList:0
 	 }
+	},
+	components:{
+		showdetail
 	},
 	mounted(){
 		this.getuserinfo();
@@ -56,6 +65,10 @@
 	methods:{
 		getuserinfo:function(){
 			let accesstoken=localStorage.getItem('accesstoken');
+			if (!accesstoken) {
+				this.$router.push({path:'/personal'});
+				return false;
+			}
 			let user =localStorage.getItem('loginname');
 		    this.$http({
 		      methods:'get',
@@ -74,7 +87,13 @@
 		},
 		pushinto:function(id){
 			console.log(id);
-			this.$router.push({path:'/showdetail',query: {id}});
+			this.selectList=id;
+			this.$refs.showdetail.show();
+			// this.$router.push({path:'/showdetail',query: {id}});
+		},
+		signOut:function(){
+			localStorage.clear();
+			window.location.reload();
 		}
 	},
 	computed: {
@@ -88,7 +107,7 @@
 	body
 		background-color:#f8f8f8
 		overflow:hidden
-	.personalcenter
+	.content
 		padding:20px
 		text-align:center
 		img
