@@ -42,7 +42,19 @@
 				}
 				this.content = marked(this.content);
 				console.log(this.title,this.tab,this.content);
-				this.$http.post('https://www.vue-js.com/api/v1/topics',{accesstoken:accesstoken,title:this.title,tab:this.tab,content:this.content}).then(function(data){console.log(data)})
+				this.$http.post('https://www.vue-js.com/api/v1/topics',{accesstoken:accesstoken,title:this.title,tab:this.tab,content:this.content}).then(function(data){
+					console.log(data);
+					if (data.body.success) {
+						alert('发布成功');
+					}else{
+						alert('发布失败');
+					}
+				},function(data){
+					if (data.status==403) {
+						alert('请先登录');
+						this.$router.push({path:'/personal'});
+					}
+				});
 			}
 		}
 	}

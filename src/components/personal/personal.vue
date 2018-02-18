@@ -23,6 +23,7 @@
 				// 'Access Token: 35a006c7-dd2d-4c1e-b2ca-e127905cf9f8
 				// http://g1217300470.coding.me/vuecommunitytest/
 				// https://github.com/gaohongwei11/vuecommunity
+				// https://www.vue-js.com/
 				let accesstoken=this.accessToken;
 				this.$http.post('https://www.vue-js.com/api/v1/accesstoken',
 					{accesstoken}

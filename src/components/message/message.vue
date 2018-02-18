@@ -6,8 +6,11 @@
 				<li :class="isShow==1?'active':''" @click='toggleTab(1)'>已读消息</li>
 			</ul>
 		</div>
-		<div class="message_cont">
-			hello world
+		<div class="message_cont" v-show='isShow==0'>
+			这是已读消息
+		</div>
+		<div class="message_cont" v-show='isShow==1'>
+			这是还没有读的消息
 		</div>
 	</div>
 </template>

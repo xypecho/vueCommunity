@@ -2,25 +2,25 @@
 	<div class="footnav">
 		<router-link to='/all' tag='div'>
 			<div class="nav_child">
-				<span class="icon"><img src="./home.png"></span>
+				<span class="icon icon-home"></span>
 				<span class="nav_name">首页</span>
 			</div>
 		</router-link>
 		<router-link to='/release' tag='div' @click.native='hidenav'>
 			<div class="nav_child">
-				<span class="icon"><img src="./fabu.png"></span>
+				<span class="icon icon-compass"></span>
 				<span class="nav_name">发布</span>
 			</div>
 		</router-link>
 		<router-link to='/message' tag='div'>
 			<div class="nav_child">
-				<span class="icon"><img src="./xiaoxi.png"></span>
+				<span class="icon icon-envelop"></span>
 				<span class="nav_name">消息</span>
 			</div>
 		</router-link>
 		<router-link to='/personal' tag='div'>
 			<div class="nav_child">
-				<span class="icon"><img src="./wo.png"></span>
+				<span class="icon icon-user"></span>
 				<span class="nav_name">我的</span>
 			</div>
 		</router-link>
@@ -50,12 +50,12 @@
 			flex:1
 			text-align:center
 			margin:auto 0
-			img
-				height:24px
 			span
 				display:block
 				font-size:14px
 				line-height:20px
+			.icon
+				font-size:18px
 		.router-link-exact-active
 			color:#31c27c
 </style>
