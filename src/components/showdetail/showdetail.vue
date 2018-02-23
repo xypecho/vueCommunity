@@ -15,8 +15,8 @@
 				</span>
 				<span class="username">{{item.author.loginname}}</span>
 				<span class="floor">{{index+1}}楼</span>
-				<div class="support" v-show='(item.ups.length)>0'>
-					<img src="./star.png" height="20">
+				<div class="support" @click='givestar(index)'>
+					<span class="icon-点赞" :class='isstar(index)'></span>
 					<span class="support_num">{{item.ups.length}}</span>
 				</div>
 			</div>
@@ -27,6 +27,7 @@
 	</div>
 </template>
 <script>
+	import Vue from 'vue';
 	export default{
 		props:{
 			showdetail:{
@@ -38,12 +39,47 @@
 				showflag:false,
 				showdetail_content:{
 					type:Object
-				}
+				},
+				star:[],
+				checked:false
 			}
 		},
 		methods:{
 			show(){
 				this.showflag=true;
+				this.getdata();
+			},
+			hide(){
+				this.showflag=false;
+			},
+			givestar(idx){
+				let reply_id=this.showdetail_content.replies[idx].id;
+				let accesstoken=localStorage.getItem('accesstoken');
+				this.$http.post(`https://www.vue-js.com/api/v1/reply/${reply_id}/ups`,{accesstoken}).then(data=>{
+					//console.log(this.showdetail_content.replies);
+					// console.log(data);
+					if (data.body.action=='up') {
+						this.showdetail_content.replies.forEach((val,key)=>{
+							this.showdetail_content.replies[idx].checked=true;
+							console.log(val);
+						})
+						this.getdata();
+					}else{
+						this.showdetail_content.replies.forEach((val,key)=>{
+							this.showdetail_content.replies[idx].checked=false;
+							console.log(val);
+						})
+						this.getdata();
+					};
+				})
+			},
+			isstar(idx){
+				for(let val of this.showdetail_content.replies){
+					Vue.set(val,'checked',false);
+					//console.log(val.checked);
+				}
+			},
+			getdata(){
 				this.$nextTick(()=>{
 					this.$http({
 						methods:'post',
@@ -53,13 +89,10 @@
 						}
 					}).then(function(data){
 						data=data.body.data;
-						console.log(data);
 						this.showdetail_content=data;
+						//console.log(this.showdetail_content.replies);
 					})
 				})
-			},
-			hide(){
-				this.showflag=false;
 			}
 		}
 	}
@@ -133,9 +166,13 @@
 					line-height:36px
 					img
 						vertical-align:sub
-					span
+					.support_num
 						display:inline-block
 						font-size:14px
 						height:36px
 						line-height:36px
+					.icon-点赞
+						height:20px
+						&.active_star
+							color:red!important
 </style>

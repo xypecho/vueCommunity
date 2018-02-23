@@ -7,10 +7,10 @@
 			</ul>
 		</div>
 		<div class="message_cont" v-show='isShow==0'>
-			这是已读消息
+			暂无未读消息
 		</div>
 		<div class="message_cont" v-show='isShow==1'>
-			这是还没有读的消息
+			暂无已读消息
 		</div>
 	</div>
 </template>

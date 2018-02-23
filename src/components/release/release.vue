@@ -60,6 +60,8 @@
 	}
 </script>
 <style lang='stylus' rel='stylesheet/stylus'>
+	body
+		background-color:#fff!important
 	.release
 		// position:relative
 		.release_title
