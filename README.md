@@ -22,7 +22,7 @@ vue2.0 + vue-cli + vue-resource + vue-router + webpack + ES6 +stylus
 * [x] 发布主题
 * [x] 消息中心（已读、未读）
 * [x] 个人中心
-[x] test
+* [x] test
 
 
 ## 项目运行
