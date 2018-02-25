@@ -103,7 +103,7 @@
 	}
 	}
 </script>
-<style lang='stylus' rel='stylesheet/stylus'>
+<style lang='stylus' rel='stylesheet/stylus' scoped>
 	body
 		background-color:#f8f8f8
 		overflow:hidden

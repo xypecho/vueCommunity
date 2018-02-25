@@ -90,14 +90,14 @@
 					}).then(function(data){
 						data=data.body.data;
 						this.showdetail_content=data;
-						//console.log(this.showdetail_content.replies);
+						console.log(this.showdetail_content);
 					})
 				})
 			}
 		}
 	}
 </script>
-<style lang='stylus' rel='stylesheet/stylus'>
+<style lang='stylus' rel='stylesheet/stylus' scoped>
 	.showdetail
 		position:fixed
 		top:0
